@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 251 249 244;
+    --foreground: 15 14 10;
+    --muted: 226 224 220;
+    --accent: 160 127 74;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory-50 text-charcoal-500 font-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    @apply bg-charcoal-500 text-ivory-50;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ivory-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-charcoal-200 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-charcoal-300;
+  }
+}
+
+@layer components {
+  .container-tight {
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-10;
+  }
+
+  .h-display {
+    @apply font-display tracking-tight leading-[1.05];
+  }
+
+  .h-eyebrow {
+    @apply uppercase tracking-ultra text-[11px] font-medium text-charcoal-400;
+  }
+
+  .divider-fade {
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme("colors.charcoal.200") 50%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      theme("colors.ivory.100") 0%,
+      theme("colors.ivory.200") 50%,
+      theme("colors.ivory.100") 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
